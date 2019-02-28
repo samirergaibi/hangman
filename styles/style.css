@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 * {
   box-sizing: border-box;
 }
@@ -6,7 +7,7 @@
 body {
   text-align: center;
   background-color: #E1E1E1;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   font-size: 1em;
   letter-spacing: 1px;
@@ -71,6 +72,10 @@ main .general-btn:hover {
   border-radius: 20px;
   transition: all 0.4s;
 }
+main #error-msg {
+  color: #ED4337;
+  font-weight: bold;
+}
 main #second-stage {
   display: none;
   padding-top: 2%;
@@ -107,6 +112,9 @@ main #second-stage p:first-child {
     display: none;
   }
 
+  header h1 {
+    margin-bottom: 1%;
+  }
   header p {
     width: 80%;
   }
