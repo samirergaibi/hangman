@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  background-color: #E1E1E1;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  font-size: 1em;
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+#hanging-rope {
+  position: absolute;
+  left: 10%;
+  transition: all 1s;
+}
+
+#hanging-rope:hover {
+  transform: rotate(10deg);
+  transition: all 1s;
+}
+
+header h1 {
+  margin-top: 0;
+  padding-top: 3%;
+  font-weight: 400;
+  font-size: 2.5em;
+}
+header p {
+  width: 50%;
+  margin: 0 auto;
+}
+
+main {
+  /*  -- Below = choose the word stage of the game --  */
+}
+main a {
+  display: none;
+}
+main label {
+  display: block;
+  margin-bottom: 1%;
+  font-size: 1.4em;
+}
+main div {
+  margin: 2%;
+}
+main input {
+  border: 2px solid black;
+  padding: 6px 30px 6px 10px;
+  outline: none;
+  transition: 0.4s;
+}
+main input:hover {
+  border-radius: 8px;
+  transition: all 0.4s;
+}
+main .general-btn {
+  padding: 10px 30px;
+  border: 2px solid black;
+  font-size: 1em;
+  outline: none;
+  transition: all 0.4s;
+}
+main .general-btn:hover {
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.4s;
+}
+main #second-stage {
+  display: none;
+  padding-top: 2%;
+}
+main #second-stage p {
+  font-size: 1.2em;
+}
+main #second-stage p:first-child {
+  margin-bottom: 3%;
+}
+
+.explanation div {
+  width: 25%;
+  margin: 5% 5% 0 5%;
+  position: absolute;
+}
+.explanation h2 {
+  text-decoration: underline;
+  font-size: 1.7em;
+  font-weight: 400;
+  margin: 0;
+}
+.explanation #executioner-explanation {
+  bottom: 40px;
+  left: 40px;
+}
+.explanation #player-explanation {
+  bottom: 40px;
+  right: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  #hanging-rope {
+    display: none;
+  }
+
+  header p {
+    width: 80%;
+  }
+
+  main button {
+    margin-top: 5%;
+  }
+  main #next-btn {
+    margin-top: 3%;
+  }
+
+  .explanation {
+    margin-top: 15%;
+  }
+  .explanation div {
+    position: initial;
+    width: initial;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

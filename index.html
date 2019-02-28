@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hänga Gubben</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+    <img id="hanging-rope" src="images/rope.svg" alt="Hanging rope">
+
+    <header>
+        <h1 id="hangman-heading">HÄNGA GUBBEN</h1>
+        <p id="game-explanation">I denna variant av hänga gubben är man två spelare som spelar, en bödel och en spelare! Var god och fyll i namnet på spelarna för att välja ord och sedan starta spelet.</p>
+    </header>
+
+    <main>
+        <!-- Below is the first stage of the game -->
+        <div id="first-stage">
+            <div class="executioner-name">
+                <label for="executioner">Bödel</label>
+                <input id="executioner" type="text">
+            </div>
+            <div class="player-name">
+                <label for="player">Spelare</label>
+                <input id="player" type="text">
+            </div>
+            <button id="next-btn" class="general-btn">NÄSTA</button>
+        </div>
+        <!-- Below is html-code for choosing word stage of the game -->
+        <div id="second-stage">
+            <p id="player-msg"></p>
+            <p id="executioner-msg"></p>
+            <div>
+                <input id="word" type="text">
+            </div>
+            <button id="start-btn" class="general-btn">STARTA</button>
+        </div>
+    </main>
+
+    <div class="explanation">
+        <div id="executioner-explanation">
+            <h2>Bödel</h2>
+            <p>Som bödel väljer du ord och ser på medans spelaren desperat försöker att inte bli hängd!</p>
+        </div>
+        <div id="player-explanation">
+            <h2>Spelare</h2>
+            <p>Som spelare försöker du bevisa bödeln fel genom att lyckas komma fram till ordet innan du bli hängd!</p>
+        </div>
+    </div>
+
+
+
+    <script src="scripts/script.js"></script>
+</body>
+</html>
