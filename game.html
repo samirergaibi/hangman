@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hänga Gubben</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    
+    <img id="hanging-rope" src="images/rope.svg" alt="Hanging rope">
+
+    <header>
+        <h1 id="hangman-heading">HÄNGA GUBBEN</h1>
+    </header>
+
+    <main class="game-area">
+        <!-- During the game -->
+        <div id="during-game">
+            <input id="guess" type="text">
+            <button id="guess-btn" class="general-btn">GISSA</button>
+            <p id="error-msg">Här har vi error meddelandet.</p>
+            <div id="complete-word"></div>
+        </div>
+        <!-- After game has been finished -->
+        <div id="after-game">
+            <h2>Vill du spela igen?</h2>
+            <button id="yes-btn" class="general-btn">JA!</button>
+            <button id="no-btn" class="general-btn">NEJ..</button>
+        </div>
+    </main>
+
+    <div class="bottom-section">
+        <div id="wrong-characters">
+        </div>
+        <div id="hangman-animation">
+            <img id="hangman-pic" src="images/hangman-stages/stage-0.svg" alt="Hangman Animation">
+        </div>
+        <span id="tries-left"></span>
+    </div>
+
+
+
+    <script src="scripts/game.js"></script>
+</body>
+</html>

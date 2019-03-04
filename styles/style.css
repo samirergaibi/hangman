@@ -75,6 +75,7 @@ main .general-btn:hover {
 main #error-msg {
   color: #ED4337;
   font-weight: bold;
+  visibility: hidden;
 }
 main #second-stage {
   display: none;
@@ -107,7 +108,46 @@ main #second-stage p:first-child {
   right: 40px;
 }
 
-@media screen and (max-width: 600px) {
+/* ## ONLY GAME.HTML ##*/
+.game-area {
+  margin-top: 8%;
+  cursor: default;
+}
+.game-area #complete-word {
+  margin-top: 8%;
+  font-size: 3em;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+.game-area #after-game {
+  display: none;
+}
+
+.bottom-section div {
+  position: absolute;
+}
+.bottom-section #wrong-characters {
+  bottom: 40px;
+  left: 40px;
+  width: 300px;
+  height: 200px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: auto;
+}
+.bottom-section #wrong-characters p {
+  margin: 0;
+  color: #cc0000;
+  font-size: 2.5em;
+  font-weight: 700;
+  display: inline-block;
+}
+.bottom-section #hangman-animation {
+  bottom: 40px;
+  right: 10%;
+}
+
+@media screen and (max-width: 700px) {
   #hanging-rope {
     display: none;
   }
@@ -132,6 +172,23 @@ main #second-stage p:first-child {
   .explanation div {
     position: initial;
     width: initial;
+  }
+
+  /* ## ONLY GAME.HTML ## */
+  main #guess-btn {
+    display: block;
+    margin: 5% auto;
+  }
+
+  .bottom-section div {
+    position: initial;
+  }
+  .bottom-section #wrong-characters {
+    margin: 0 auto;
+  }
+  .bottom-section #hangman-animation img {
+    width: 250px;
+    margin: 10% auto;
   }
 }
 
