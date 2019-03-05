@@ -31,6 +31,21 @@ body{
     transform: rotate(10deg);
     transition: all 1s;
 }
+.home{
+    color: black;
+    font-size: 48px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    .fa-home{
+        font-size: 42px;
+        transition: all 0.3s;
+    }
+    .fa-home:hover{
+        transform: scale(1.1);
+        transition: all 0.3s;
+    }
+}
 
 header{
     h1{
@@ -126,16 +141,6 @@ main{
 }
 
 /* ## ONLY GAME.HTML ##*/
-.home{
-    color: black;
-    font-size: 48px;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    .fa-home{
-        font-size: 42px;
-    }
-}
 .game-area{
     margin-top: 8%;
     cursor: default;
