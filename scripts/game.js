@@ -88,7 +88,7 @@ guessBtn.addEventListener("click", function(){
             // If GAME OVER (player guesses exceeded 10)
             if(stageCounter >= 10){
                 hangmanHeading.innerText = playerName.toUpperCase() + " HAR BLIVIT HÄNGD!";
-                hangmanAnimation.src = `images/hangman-stages/stage-${stageCounter}.svg`;
+                hangmanAnimation.src = `images/stages/stage-${stageCounter}.svg`;
                 duringGameContent.style.display = "none";
                 afterGameContent.style.display = "block";
             }
@@ -97,7 +97,7 @@ guessBtn.addEventListener("click", function(){
             }
             // Change the hangman animation accordingly.
             else{
-                hangmanAnimation.src = `images/hangman-stages/stage-${stageCounter}.svg`;
+                hangmanAnimation.src = `images/stages/stage-${stageCounter}.svg`;
             }
             // Add the guessed letter to the "wrong-guesses-area".
             allGuesses.push(guessChar);
