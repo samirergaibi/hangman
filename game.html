@@ -5,20 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hänga Gubben</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     
-    <img id="hanging-rope" src="images/rope.svg" alt="Hanging rope">
-
+    
     <header>
+        <img id="hanging-rope" src="images/rope.svg" alt="Hanging rope">
+        <a class="home" href="index.html"><i class="fas fa-home"></i></a>
         <h1 id="hangman-heading">HÄNGA GUBBEN</h1>
     </header>
 
     <main class="game-area">
         <!-- During the game -->
         <div id="during-game">
-            <input id="guess" type="text">
+            <input id="guess" type="text" maxlength="1">
             <button id="guess-btn" class="general-btn">GISSA</button>
             <p id="error-msg">Här har vi error meddelandet.</p>
             <div id="complete-word"></div>
@@ -32,12 +34,10 @@
     </main>
 
     <div class="bottom-section">
-        <div id="wrong-characters">
-        </div>
-        <div id="hangman-animation">
-            <img id="hangman-pic" src="images/hangman-stages/stage-0.svg" alt="Hangman Animation">
-        </div>
-        <span id="tries-left"></span>
+        <div id="wrong-characters"></div>
+            <div id="hangman-animation">
+                <img id="hangman-pic" src="images/hangman-stages/stage-0.svg" alt="Hangman Animation">
+            </div>
     </div>
 
 
