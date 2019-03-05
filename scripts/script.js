@@ -56,7 +56,22 @@ startBtn.addEventListener("click", function(){
     }
 }, false)
 
+// -- Toggle Word button --
 
+const wordToggle = document.getElementById("word-toggle");
+
+["mousedown", "touchstart"].forEach(function(event){
+    wordToggle.addEventListener(event, function(){
+        word.type = "text";
+        wordToggle.style.opacity = 1;
+    }, false)
+});
+["mouseup", "mouseleave", "touchend", "touchcancel"].forEach(event => {
+    wordToggle.addEventListener(event, function(){
+        word.type = "password";
+        wordToggle.style.opacity = 0.5;
+    }, false)
+});
 
 
 // Checks if the string contains and invalid symbols, if it does it returns true

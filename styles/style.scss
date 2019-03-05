@@ -93,6 +93,13 @@ main{
         p:first-child{
             margin-bottom: 3%;
         }
+        #word-toggle{
+            position: relative;
+            top: 1px;
+            left: 10px;
+            cursor: pointer;
+            opacity: 0.5;
+        }
     }
 }
 

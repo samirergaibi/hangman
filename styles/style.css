@@ -88,6 +88,13 @@ main #second-stage p {
 main #second-stage p:first-child {
   margin-bottom: 3%;
 }
+main #second-stage #word-toggle {
+  position: relative;
+  top: 1px;
+  left: 10px;
+  cursor: pointer;
+  opacity: 0.5;
+}
 
 .explanation div {
   width: 25%;
