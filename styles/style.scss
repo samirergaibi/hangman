@@ -37,6 +37,7 @@ header{
         margin-top: 0;
         font-weight: 400;
         font-size: 2.5em;
+        padding-top: 3%;
     }
     p{
         width: 50%;
@@ -169,15 +170,19 @@ main{
         }
     }
 }
-
-// when the screen width is less than 600px
-@media screen and (max-width: 900px){
+// When the screen width is less than 1300px
+@media screen and (max-width: 1300px){
     #hanging-rope{
         display: none;
     }
+}
+
+// when the screen width is less than 800px
+@media screen and (max-width: 800px){
     header{
         h1{
             margin-bottom: 1%;
+            padding-top: initial;
         }
         p{
             width: 80%;
