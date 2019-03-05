@@ -79,6 +79,7 @@ guessBtn.addEventListener("click", function(){
                 duringGameContent.style.display = "none";
                 afterGameContent.style.display = "block";
             }
+            allGuesses.push(guessChar);
         }
         // If the word did not include the guessed character do this.
         else{

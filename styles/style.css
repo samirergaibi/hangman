@@ -144,10 +144,10 @@ main #second-stage p:first-child {
 }
 .bottom-section #hangman-animation {
   bottom: 40px;
-  right: 10%;
+  right: 40px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   #hanging-rope {
     display: none;
   }
