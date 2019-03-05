@@ -144,7 +144,7 @@ main #second-stage p:first-child {
 }
 .bottom-section #hangman-animation {
   bottom: 40px;
-  right: 40px;
+  right: 60px;
 }
 
 @media screen and (max-width: 900px) {
