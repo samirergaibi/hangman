@@ -4,13 +4,32 @@
 const gameExplanation = document.getElementById("game-explanation");
 const nextBtn = document.getElementById("next-btn");
 const hangmanHeading = document.getElementById("hangman-heading");
-const executionerName = document.getElementById("executioner");
-const playerName = document.getElementById("player");
+let executionerName = document.getElementById("executioner");
+let playerName = document.getElementById("player");
 const firstStage = document.getElementById("first-stage");
 const secondStage = document.getElementById("second-stage");
 const playerMsg = document.getElementById("player-msg")
 const executionerMsg = document.getElementById("executioner-msg");
 const errorMsg = document.getElementById("error-msg");
+
+// Clicking home button resets localstorage
+let home = document.getElementById("home");
+home.addEventListener("click", function(){
+    localStorage.clear();
+}, false);
+
+// Checks if there is a current game running or not
+if(localStorage.playerName && localStorage.executionerName){
+    playerName = localStorage.getItem("playerName");
+    executionerName = localStorage.getItem("executionerName");
+    errorMsg.style.visibility = "hidden";
+    hangmanHeading.innerText = "HÄNGA " + playerName.toUpperCase();
+    gameExplanation.style.display = "none";
+    firstStage.style.display = "none";
+    secondStage.style.display = "block";
+    playerMsg.innerHTML = "<b>" + capitalizeFirstLetter(playerName) + "</b>" + " var god och blunda eller titta bort!";
+    executionerMsg.innerHTML = "<b>" + capitalizeFirstLetter(executionerName) + "</b>" + " var god och välj ett ord!";
+}
 
 nextBtn.addEventListener("click", function(){
     // checks so that the names only contain letters a-z +åäö
@@ -50,9 +69,14 @@ startBtn.addEventListener("click", function(){
     }
     else{
         localStorage.setItem("gameWord", word.value.toUpperCase());
-        localStorage.setItem("executionerName", executionerName.value);
-        localStorage.setItem("playerName", playerName.value);
-        window.location = "game.html";
+        if(localStorage.playerName && localStorage.executionerName){
+            window.location = "game.html";
+        }
+        else{
+            localStorage.setItem("executionerName", executionerName.value);
+            localStorage.setItem("playerName", playerName.value);
+            window.location = "game.html";
+        }
     }
 }, false)
 
