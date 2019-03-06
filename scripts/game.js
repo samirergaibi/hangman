@@ -1,16 +1,33 @@
-
+// Objects with name and score and status for each player
+let player = {
+    name: localStorage.getItem("playerName"),
+    status: "player",
+    score: 0,
+}
+let executioner = {
+    name: localStorage.getItem("executionerName"),
+    status: "executioner",
+    score: 0,
+}
+if(localStorage.playerScore && localStorage.executionerScore){
+    player.score = localStorage.playerScore;
+    executioner.score = localStorage.executionerScore;
+}
 
 // --References--
 const hangmanHeading = document.getElementById("hangman-heading");
-const executionerName = localStorage.getItem("executionerName");
-const playerName = localStorage.getItem("playerName");
 const gameWord = localStorage.getItem("gameWord");
 const completeWord = document.getElementById("complete-word");
 
+// Clicking home button resets localstorage
+let home = document.getElementById("home");
+home.addEventListener("click", function(){
+    localStorage.clear();
+}, false);
 
 function startGame(){
-    if(playerName){
-        hangmanHeading.innerText = "HÄNGA " + playerName.toUpperCase();
+    if(player.name){
+        hangmanHeading.innerText = "HÄNGA " + player.name.toUpperCase();
     }
     else{
         console.log("Could not find the playername.");
@@ -28,6 +45,7 @@ const guessBtn = document.getElementById("guess-btn");
 const errorMsg = document.getElementById("error-msg");
 let duringGameContent = document.getElementById("during-game");
 let afterGameContent = document.getElementById("after-game");
+let currentScore = document.getElementById("current-score");
 
 let stageCounter = 0;
 let allGuesses = [];
@@ -75,9 +93,11 @@ guessBtn.addEventListener("click", function(){
                 guessedWord += guessedLetters[i].innerText;
             }
             if(guessedWord === gameWord){
-                hangmanHeading.innerText = playerName.toUpperCase() + " HAR FLYTT SNARAN!";
+                player.score++;
+                hangmanHeading.innerText = player.name.toUpperCase() + " HAR FLYTT SNARAN!";
                 duringGameContent.style.display = "none";
                 afterGameContent.style.display = "block";
+                currentScore.innerHTML = player.name.toUpperCase() + ":  <b>" + player.score + "</b> - " + executioner.name.toUpperCase() + ": <b>" + executioner.score + "</b>";
             }
             allGuesses.push(guessChar);
         }
@@ -87,10 +107,12 @@ guessBtn.addEventListener("click", function(){
             let hangmanAnimation = document.getElementById("hangman-pic");
             // If GAME OVER (player guesses exceeded 10)
             if(stageCounter >= 10){
-                hangmanHeading.innerText = playerName.toUpperCase() + " HAR BLIVIT HÄNGD!";
+                executioner.score++;
+                hangmanHeading.innerText = player.name.toUpperCase() + " HAR BLIVIT HÄNGD!";
                 hangmanAnimation.src = `images/stages/stage-${stageCounter}.svg`;
                 duringGameContent.style.display = "none";
                 afterGameContent.style.display = "block";
+                currentScore.innerHTML = player.name.toUpperCase() + ":  <b>" + player.score + "</b> - " + executioner.name.toUpperCase() + ": <b>" + executioner.score + "</b>";
             }
             else if(stageCounter > 10){
                 console.error("Variable StageCounter is going crazy.");
@@ -111,13 +133,22 @@ guessBtn.addEventListener("click", function(){
 const yesBtn = document.getElementById("yes-btn");
 const noBtn = document.getElementById("no-btn");
 
+// If the players chooses to continue onto round 2
 yesBtn.addEventListener("click", function(){
+    let holder;
+    holder = executioner.name;
+    executioner.name = player.name;
+    player.name = holder;
+    localStorage.setItem("playerName", player.name);
+    localStorage.setItem("playerScore", executioner.score);
+    localStorage.setItem("executionerName", executioner.name);
+    localStorage.setItem("executionerScore", player.score);
     window.location = "index.html";
 }, false)
-
+// If the players wants to start over
 noBtn.addEventListener("click", function(){
+    localStorage.clear();
     window.location = "index.html";
-    window.close();
 }, false)
 
 function checkCharacterContent(str){
