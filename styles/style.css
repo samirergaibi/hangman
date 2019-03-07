@@ -248,6 +248,7 @@ main #second-stage #word-toggle {
   /* ## ONLY GAME.HTML ## */
   header .home {
     position: initial;
+    display: block;
   }
 
   main #guess-btn {
