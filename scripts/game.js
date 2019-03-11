@@ -9,6 +9,7 @@ let executioner = {
     status: "executioner",
     score: 0,
 }
+// If there is a game in progress already set the score to the current game score
 if(localStorage.playerScore && localStorage.executionerScore){
     player.score = localStorage.playerScore;
     executioner.score = localStorage.executionerScore;
