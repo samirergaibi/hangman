@@ -44,18 +44,20 @@ body {
     transform: rotate(0deg);
   }
 }
-.home {
-  color: black;
-  font-size: 48px;
+.icon-container {
   position: absolute;
   top: 10px;
   right: 20px;
 }
-.home .fa-home {
-  font-size: 42px;
+.icon-container a {
+  font-size: 48px;
+  color: black;
+  margin: 10px;
+}
+.icon-container .fas {
   transition: all 0.3s;
 }
-.home .fa-home:hover {
+.icon-container .fas:hover {
   transform: scale(1.1);
   transition: all 0.3s;
 }
@@ -216,6 +218,25 @@ main #second-stage #word-toggle {
   height: 300px;
 }
 
+/*  ## SINGLE PLAYER ##  */
+#during-game-SP, #after-game-SP {
+  display: none;
+  margin-top: 8%;
+}
+
+.game-area-SP #complete-word {
+  margin-top: 8%;
+  font-size: 3em;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+#error-msg-guess {
+  color: #ED4337;
+  font-weight: bold;
+  visibility: hidden;
+}
+
 @media screen and (max-width: 1300px) {
   #hanging-rope {
     display: none;
@@ -246,7 +267,7 @@ main #second-stage #word-toggle {
   }
 
   /* ## ONLY GAME.HTML ## */
-  header .home {
+  header .icon-container {
     position: initial;
     display: block;
   }

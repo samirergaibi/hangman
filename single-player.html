@@ -18,23 +18,33 @@
             <a id="home" class="home" href="index.html"><i class="fas fa-home"></i></a>
         </div>
         <h1 id="hangman-heading">HÄNGA GUBBEN</h1>
+        <p id="game-explanation">Var god och ange ditt namn för att spela mot vår robot!</p>
     </header>
 
-    <main class="game-area">
+    <main class="game-area-SP">
+        <!-- Before game -->
+        <div id="pre-game-SP">
+            <div>
+                <label for="player-name">Namn</label>
+                <input id="player-name" type="text">
+            </div>
+            <button id="start-btn" class="general-btn">SPELA</button>
+        </div>
         <!-- During the game -->
-        <div id="during-game">
+        <div id="during-game-SP">
             <input id="guess" type="text" maxlength="1">
             <button id="guess-btn" class="general-btn">GISSA</button>
-            <p id="error-msg">Här har vi error meddelandet.</p>
+            <p id="error-msg-guess">Här har vi error meddelandet.</p>
             <div id="complete-word"></div>
         </div>
         <!-- After game has been finished -->
-        <div id="after-game">
-            <h2>Vill ni påbörja nästa runda?</h2>
+        <div id="after-game-SP">
+            <h2>Vill du spela igen?</h2>
             <p id="current-score"></p>
             <button id="yes-btn" class="general-btn">JA!</button>
             <button id="no-btn" class="general-btn">NEJ..</button>
         </div>
+        <p id="error-msg">Här har vi error meddelandet.</p>
     </main>
 
     <div class="bottom-section">
@@ -46,6 +56,6 @@
 
 
 
-    <script src="scripts/game.js"></script>
+    <script src="scripts/single-player.js"></script>
 </body>
 </html>
