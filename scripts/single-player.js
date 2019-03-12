@@ -10,6 +10,8 @@ let guessBtn = document.getElementById("guess-btn");
 let yesBtn = document.getElementById("yes-btn");
 let noBtn = document.getElementById("no-btn");
 let guessInput = document.getElementById("guess");
+let wrongChars = document.getElementById("wrong-characters");
+let animation = document.getElementById("hangman-pic");
 
 let player = {
     name: "",
@@ -86,8 +88,6 @@ function checkGuessInput(){
     // If the guess is a letter between a-ö
     else{
         errorMsg.style.visibility = "hidden";
-        let wrongChars = document.getElementById("wrong-characters");
-        let animation = document.getElementById("hangman-pic");
         let score = document.getElementById("current-score");
         
         // if the word does not contain the letter that was guessed
@@ -129,11 +129,22 @@ function checkGuessInput(){
     }
 }
 
+// If the user chooses to play again
 yesBtn.addEventListener("click", function(){
-
+    counter =  0;
+    allGuesses = [];
+    afterGame.style.display = "none";
+    gameWord = chooseWord().toUpperCase();
+    animation.src = "images/stages/stage-0.svg";
+    wrongChars.innerHTML = "";
+    duringGame.style.display = "block";
+    heading.innerText = "HÄNGA " + player.name;
+    displayWord();
 }, false);
 
+// If the user chooses to not play again
 noBtn.addEventListener("click", function(){
+    localStorage.clear();
     window.location = "index.html";
 }, false)
 
@@ -152,6 +163,7 @@ function chooseWord(){
 // displays the lines of the word on the page
 function displayWord(){
     let completeWord = document.getElementById("complete-word");
+    completeWord.innerHTML = "";
     for(let i = 0; i < gameWord.length; i++){
         completeWord.innerHTML += `<span id="char-${i}" class="letter">_</span>\n`;
     }
