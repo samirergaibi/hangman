@@ -1,29 +1,29 @@
 // Objects with name and score and status for each player
 let player = {
-    name: localStorage.getItem("playerName"),
+    name: sessionStorage.getItem("playerName"),
     status: "player",
     score: 0,
 }
 let executioner = {
-    name: localStorage.getItem("executionerName"),
+    name: sessionStorage.getItem("executionerName"),
     status: "executioner",
     score: 0,
 }
 // If there is a game in progress already set the score to the current game score
-if(localStorage.playerScore && localStorage.executionerScore){
-    player.score = localStorage.playerScore;
-    executioner.score = localStorage.executionerScore;
+if(sessionStorage.playerScore && sessionStorage.executionerScore){
+    player.score = sessionStorage.playerScore;
+    executioner.score = sessionStorage.executionerScore;
 }
 
 // --References--
 const hangmanHeading = document.getElementById("hangman-heading");
-const gameWord = localStorage.getItem("gameWord");
+const gameWord = sessionStorage.getItem("gameWord");
 const completeWord = document.getElementById("complete-word");
 
-// Clicking home button resets localstorage
+// Clicking home button resets sessionStorage
 let home = document.getElementById("home");
 home.addEventListener("click", function(){
-    localStorage.clear();
+    sessionStorage.clear();
 }, false);
 
 function startGame(){
@@ -116,7 +116,7 @@ guessBtn.addEventListener("click", function(){
                 currentScore.innerHTML = player.name.toUpperCase() + ":  <b>" + player.score + "</b> - " + executioner.name.toUpperCase() + ": <b>" + executioner.score + "</b>";
             }
             else if(stageCounter > 10){
-                console.error("Variable StageCounter is going crazy.");
+                console.error("Variable StageCounter is going crazy. Contact creator of game.");
             }
             // Change the hangman animation accordingly.
             else{
@@ -140,15 +140,15 @@ yesBtn.addEventListener("click", function(){
     holder = executioner.name;
     executioner.name = player.name;
     player.name = holder;
-    localStorage.setItem("playerName", player.name);
-    localStorage.setItem("playerScore", executioner.score);
-    localStorage.setItem("executionerName", executioner.name);
-    localStorage.setItem("executionerScore", player.score);
+    sessionStorage.setItem("playerName", player.name);
+    sessionStorage.setItem("playerScore", executioner.score);
+    sessionStorage.setItem("executionerName", executioner.name);
+    sessionStorage.setItem("executionerScore", player.score);
     window.location = "index.html";
 }, false)
 // If the players wants to start over
 noBtn.addEventListener("click", function(){
-    localStorage.clear();
+    sessionStorage.clear();
     window.location = "index.html";
 }, false)
 

@@ -32,11 +32,28 @@ let words = [
     "tavla",
     "dator",
     "träd",
-    "sommar"
+    "sommar",
+    "skola",
+    "tavla",
+    "gravitation",
+    "elektricitet",
+    "häst",
+    "hund",
+    "halsband",
+    "äpple",
+    "kniv",
+    "gaffel",
+    "tallrik",
+    "ord",
+    "grässtrå",
+    "fiol",
+    "stråke",
+    "gitarr",
+    "plektrum",
 ];
 // Choose a word and save it in a variable
 let gameWord = chooseWord().toUpperCase();
-console.log(gameWord);
+
 startBtn.addEventListener("click", function(){
     let gameExplanation = document.getElementById("game-explanation");
     let errorMsg = document.getElementById("error-msg");
@@ -99,12 +116,16 @@ function checkGuessInput(){
             guessInput.value = "";
             // If the user have no tries left do this
             if(counter >= 10){
-                console.log("You failed");
                 robot.score++;
                 heading.innerText = player.name + " HAR BLIVIT HÄNGD!";
                 duringGame.style.display = "none";
                 afterGame.style.display = "block";
                 score.innerHTML = `${player.name}: <b>${player.score}</b> - ${robot.name}: <b>${robot.score}</b>`;
+                let showGameWord = document.getElementById("error-msg");
+                showGameWord.innerHTML = "Ordet du sökte var: " + "<u>" + gameWord + "</u>";
+                showGameWord.style.color = "#000";
+                showGameWord.style.display = "block";
+                showGameWord.style.visibility = "visible";
             }
         }
         // If the word contains the letter that was guessed
@@ -133,8 +154,15 @@ function checkGuessInput(){
 yesBtn.addEventListener("click", function(){
     counter =  0;
     allGuesses = [];
+    let showGameWord = document.getElementById("error-msg");
+    showGameWord.style.color = "#ED4337";
+    showGameWord.style.display = "none";
+    showGameWord.style.visibility = "hidden";
     afterGame.style.display = "none";
-    gameWord = chooseWord().toUpperCase();
+    let previousWord = gameWord;
+    while(gameWord === previousWord){
+        gameWord = chooseWord().toUpperCase();
+    }
     animation.src = "images/stages/stage-0.svg";
     wrongChars.innerHTML = "";
     duringGame.style.display = "block";

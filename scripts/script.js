@@ -12,16 +12,16 @@ const playerMsg = document.getElementById("player-msg")
 const executionerMsg = document.getElementById("executioner-msg");
 const errorMsg = document.getElementById("error-msg");
 
-// Clicking home button resets localstorage
+// Clicking home button resets sessionStorage
 let home = document.getElementById("home");
 home.addEventListener("click", function(){
-    localStorage.clear();
+    sessionStorage.clear();
 }, false);
 
 // Checks if there is a current game running or not
-if(localStorage.playerName && localStorage.executionerName){
-    playerName = localStorage.getItem("playerName");
-    executionerName = localStorage.getItem("executionerName");
+if(sessionStorage.playerName && sessionStorage.executionerName){
+    playerName = sessionStorage.getItem("playerName");
+    executionerName = sessionStorage.getItem("executionerName");
     errorMsg.style.visibility = "hidden";
     hangmanHeading.innerText = "HÄNGA " + playerName.toUpperCase();
     gameExplanation.style.display = "none";
@@ -68,13 +68,13 @@ startBtn.addEventListener("click", function(){
         errorMsg.innerText = "Du måste skriva in ett ord.";
     }
     else{
-        localStorage.setItem("gameWord", word.value.toUpperCase());
-        if(localStorage.playerName && localStorage.executionerName){
+        sessionStorage.setItem("gameWord", word.value.toUpperCase());
+        if(sessionStorage.playerName && sessionStorage.executionerName){
             window.location = "game.html";
         }
         else{
-            localStorage.setItem("executionerName", executionerName.value);
-            localStorage.setItem("playerName", playerName.value);
+            sessionStorage.setItem("executionerName", executionerName.value);
+            sessionStorage.setItem("playerName", playerName.value);
             window.location = "game.html";
         }
     }
