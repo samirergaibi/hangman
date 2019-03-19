@@ -11,6 +11,8 @@ const secondStage = document.getElementById("second-stage");
 const playerMsg = document.getElementById("player-msg")
 const executionerMsg = document.getElementById("executioner-msg");
 const errorMsg = document.getElementById("error-msg");
+const startBtn = document.getElementById("start-btn");
+const word = document.getElementById("word");
 
 // Clicking home button resets sessionStorage
 let home = document.getElementById("home");
@@ -29,6 +31,7 @@ if(sessionStorage.playerName && sessionStorage.executionerName){
     secondStage.style.display = "block";
     playerMsg.innerHTML = "<b>" + capitalizeFirstLetter(playerName) + "</b>" + " var god och blunda eller titta bort!";
     executionerMsg.innerHTML = "<b>" + capitalizeFirstLetter(executionerName) + "</b>" + " var god och välj ett ord!";
+    word.focus();
 }
 
 nextBtn.addEventListener("click", function(){
@@ -47,15 +50,12 @@ nextBtn.addEventListener("click", function(){
         gameExplanation.style.display = "none";
         firstStage.style.display = "none";
         secondStage.style.display = "block";
+        word.focus();
         playerMsg.innerHTML = "<b>" + capitalizeFirstLetter(playerName.value) + "</b>" + " var god och blunda eller titta bort!";
         executionerMsg.innerHTML = "<b>" + capitalizeFirstLetter(executionerName.value) + "</b>" + " var god och välj ett ord!";
     }
 }, false)
 
-
-// --References--
-const startBtn = document.getElementById("start-btn");
-const word = document.getElementById("word");
 
 startBtn.addEventListener("click", function(){
     // Checks so that the word only contains characters a-z+åäö
@@ -96,6 +96,25 @@ const wordToggle = document.getElementById("word-toggle");
         wordToggle.style.opacity = 0.5;
     }, false)
 });
+
+
+// Eventlistener for pressing enter in the input fields
+let firstStageInput = document.getElementsByClassName("first-stage-input");
+
+for(let i = 0; i < firstStageInput.length; i++){
+    firstStageInput[i].addEventListener("keypress", function(event){
+        if(event.which === 13){
+            nextBtn.click();
+        }
+    }, false);
+}
+
+word.addEventListener("keypress", function(event){
+    if(event.which === 13){
+        startBtn.click();
+    }
+}, false);
+
 
 
 // Checks if the string contains and invalid symbols, if it does it returns true
