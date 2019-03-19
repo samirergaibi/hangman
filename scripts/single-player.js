@@ -176,6 +176,19 @@ noBtn.addEventListener("click", function(){
     window.location = "index.html";
 }, false)
 
+// Event listeners for enter on input fields
+playerName.addEventListener("keypress", function(event){
+    if(event.which === 13){
+        startBtn.click();
+    }
+}, false);
+
+guessInput.addEventListener("keypress", function(event){
+    if(event.which === 13){
+        guessBtn.click();
+    }
+}, false);
+
 
 // --### FUNCTIONS ###--
 // Check a string for other values than a-ö
@@ -195,6 +208,7 @@ function displayWord(){
     for(let i = 0; i < gameWord.length; i++){
         completeWord.innerHTML += `<span id="char-${i}" class="letter">_</span>\n`;
     }
+    guessInput.focus();
 }
 // Get the current word that the user has guessed so far
 function getCurrentWord(){

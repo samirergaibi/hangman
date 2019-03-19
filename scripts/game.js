@@ -50,7 +50,47 @@ let currentScore = document.getElementById("current-score");
 
 let stageCounter = 0;
 let allGuesses = [];
-guessBtn.addEventListener("click", function(){
+guessBtn.addEventListener("click", handleGuess, false);
+
+const yesBtn = document.getElementById("yes-btn");
+const noBtn = document.getElementById("no-btn");
+
+// If the players chooses to continue onto round 2
+yesBtn.addEventListener("click", function(){
+    let holder;
+    holder = executioner.name;
+    executioner.name = player.name;
+    player.name = holder;
+    sessionStorage.setItem("playerName", player.name);
+    sessionStorage.setItem("playerScore", executioner.score);
+    sessionStorage.setItem("executionerName", executioner.name);
+    sessionStorage.setItem("executionerScore", player.score);
+    window.location = "index.html";
+}, false)
+// If the players wants to start over
+noBtn.addEventListener("click", function(){
+    sessionStorage.clear();
+    window.location = "index.html";
+}, false)
+
+// Event listener for all input fields
+let everyInputField = document.getElementsByTagName("input");
+for(let i = 0; i < everyInputField.length; i++){
+    everyInputField[i].addEventListener("keypress", function(event){
+        if(event.which === 13){
+            handleGuess();
+        }
+    }, false);
+}
+
+
+
+function checkCharacterContent(str){
+    let regex = /[^a-zåäöA-ZÅÄÖ]/g;
+    return regex.test(str);
+}
+
+function handleGuess(){
     let guessChar = guessInput.value.toUpperCase();
     let charIndexes = [];
     // if the guessed character is not valid do this.
@@ -129,30 +169,4 @@ guessBtn.addEventListener("click", function(){
             guessInput.value = "";
         }
     }
-})
-
-const yesBtn = document.getElementById("yes-btn");
-const noBtn = document.getElementById("no-btn");
-
-// If the players chooses to continue onto round 2
-yesBtn.addEventListener("click", function(){
-    let holder;
-    holder = executioner.name;
-    executioner.name = player.name;
-    player.name = holder;
-    sessionStorage.setItem("playerName", player.name);
-    sessionStorage.setItem("playerScore", executioner.score);
-    sessionStorage.setItem("executionerName", executioner.name);
-    sessionStorage.setItem("executionerScore", player.score);
-    window.location = "index.html";
-}, false)
-// If the players wants to start over
-noBtn.addEventListener("click", function(){
-    sessionStorage.clear();
-    window.location = "index.html";
-}, false)
-
-function checkCharacterContent(str){
-    let regex = /[^a-zåäöA-ZÅÄÖ]/g;
-    return regex.test(str);
 }
